@@ -1,15 +1,14 @@
 #include "main.h"
 
 /**
- * readline - function that reads the input from the user
- * Return: returns a pointer to a string
+ * read_cmd - Reads a command from standard input.
+ * @cmd: Pointer to a buffer where the command will be stored.
+ * @len: Pointer to the size of the buffer.
  *
-*/
-
-char* readline(void)
+ * Return: Number of characters read, or -1 on failure.
+ */
+ssize_t read_cmd(char **cmd, size_t *len)
 {
-	int buffer_size;
-	int i; /* for the position */
-	char *buffer;
-
-	buffer_size = 
+	prompt("#cisfun$ ");
+	return (getline(cmd, len, stdin));
+}
