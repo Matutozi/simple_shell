@@ -1,6 +1,6 @@
 #include "main.h"
 /**
- * display - prints content to the standard output.
+ * prompt - prints content to the standard output.
  * @chr: character of string to be displayed on the stdout.
  *
  * Return: returns string
