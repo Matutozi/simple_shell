@@ -6,16 +6,19 @@
  * Return: Pointer to the full path of the command, or NULL if not found.
  */
 
-char *find_path(char *command)
+char *find_path(char *cmd)
 {
 	char *path = getenv("PATH");
 	char *path_copy = _strdup(path);
 	char *token = _strtok(path_copy, ":");
 
+	if (access(cmd, X_OK) == 0)
+		return (cmd);
+
 	while (token != NULL)
 	{
 		size_t dir_len = _strlen(token);
-		size_t cmd_len = _strlen(command);
+		size_t cmd_len = _strlen(cmd);
 		char *full_path = malloc(dir_len + 1 + cmd_len + 1);
 
 		if (full_path == NULL)
@@ -25,11 +28,11 @@ char *find_path(char *command)
 		}
 		_strcpy(full_path, token);
 		full_path[dir_len] = '/';
-		_strcpy(full_path + dir_len + 1, command);
+		_strcpy(full_path + dir_len + 1, cmd);
 
 		if (access(full_path, X_OK) == 0)
 		{
-			return full_path;
+			return (full_path);
 		}
 
 		free(full_path);
