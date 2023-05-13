@@ -30,6 +30,7 @@ int execute_cmd(char *cmd)
 	if (fork() == 0)
 	{
 		char *full_path = find_path(argv[0]);
+
 		if (full_path)
 		{
 			if (execve(full_path, argv, NULL) == -1)
@@ -50,5 +51,6 @@ int execute_cmd(char *cmd)
 		wait(&status);
 		free(argv);
 	}
+	free(argv);
 	return (0);
 }
