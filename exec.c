@@ -9,8 +9,10 @@
 int execute_cmd(char *cmd)
 {
 	char *cmd_cpy = _strdup(cmd);
-	char *token = NULL, *delim = " \n";
-	int status, argc = 0;
+	char *token = NULL;
+	char *delim = " \n";
+	int status;
+	int argc = 0;
 	char **argv = malloc(256 * sizeof(char *));
 
 	token = _strtok(cmd_cpy, delim);
