@@ -8,13 +8,13 @@
 #include <sys/wait.h>
 #include <unistd.h>
 
-#define BUFSIZE 1024
+#define BUFFERSIZE 1024
 
 ssize_t prompt(char *chr);
 char *_strdup(char *str);
 int _strlen(char *s);
 char *_strcpy(char *dest, char *src);
-int _strcmp(char *s1, char *s2);
+int _strcmp(const char *string1, const char *string2);
 int cmp_chars(char str[], const char *delim);
 char *_strtok(char str[], const char *delim);
 ssize_t read_cmd(char **cmd, size_t *len);
