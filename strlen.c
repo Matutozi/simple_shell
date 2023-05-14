@@ -2,15 +2,18 @@
 
 /**
  * _strlen - returns the length of a string.
- * @s: input stringeturn.
+ * @s: parameter that stores the input string
  * Return: length of a string.
- */
-int _strlen(char *s)
+ *
+*/
+
+size_t _strlen(char *s)
 {
-	int count = 0;
+	size_t count = 0;
 
 	while (*(s + count) != '\0')
+	{
 		count++;
-
+	}
 	return (count);
 }
