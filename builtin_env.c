@@ -6,7 +6,7 @@
  * Return: return void
 */
 
-void print_environment()
+void print_environment(char **env)
 {
 	extern char **environ;
 	char **env = environ;
@@ -18,4 +18,3 @@ void print_environment()
 		env++;
 	}
 }
-
