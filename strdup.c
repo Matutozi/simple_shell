@@ -7,22 +7,19 @@
  */
 char *_strdup(char *str)
 {
-	char *strout;
+	int length;
+	char *str_cpy;
 	unsigned int i, j;
 
 	if (str == NULL)
 		return (NULL);
+	length = _strlen(str);
+	str_cpy = malloc(sizeof(char) * (length + 1));
 
-	for (i = 0; str[i] != '\0'; i++)
-		;
-
-	strout = (char *)malloc(sizeof(char) * (i + 1));
-
-	if (strout == NULL)
+	if (str_cpy == NULL)
 		return (NULL);
 
 	for (j = 0; j <= i; j++)
-		strout[j] = str[j];
-
-	return (strout);
+		str_cpy[j] = str[j];
+	return (str_cpy);
 }
