@@ -12,7 +12,7 @@
 
 ssize_t prompt(char *chr);
 char *_strdup(char *str);
-int _strlen(char *s);
+size_t _strlen(char *s);
 char *_strcpy(char *dest, char *src);
 int _strcmp(const char *string1, const char *string2);
 int cmp_chars(char str[], const char *delim);
