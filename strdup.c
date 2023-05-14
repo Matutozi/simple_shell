@@ -7,9 +7,9 @@
  */
 char *_strdup(char *str)
 {
-	int length;
+	unsigned int length;
 	char *str_cpy;
-	unsigned int i, j;
+	unsigned int j;
 
 	if (str == NULL)
 		return (NULL);
