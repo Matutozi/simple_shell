@@ -27,23 +27,17 @@ int execute_cmd(char *cmd)
 		free(cmd_cpy), free(argv);
 		exit(0);
 	}
+	else if (_strcmp(argv[0], "env") == 0)
+	{
+		print_environment();
+		free(cmd_cpy);
+		free(argv);
+		return (0);
+	}
+
 	if (fork() == 0)
 	{
-		char *full_path = find_path(argv[0]);
-		if (full_path)
-		{
-			if (execve(full_path, argv, NULL) == -1)
-			{
-				perror("./shell");
-				exit(1);
-			}
-			free(full_path), free(argv);
-		}
-		else
-		{
-			perror("./shell");
-			exit(1);
-		}
+		execute_child_process(argv[0]);
 	}
 	else
 	{
@@ -51,4 +45,37 @@ int execute_cmd(char *cmd)
 		free(argv);
 	}
 	return (0);
+}
+
+/**
+ * execute_child_process - function that executes the child process
+ * @input: parameter
+ *
+ * Return: void
+ *
+*/
+
+void execute_child_process(char *input)
+{
+	char *full_path = find_path(input);
+
+	if (full_path != NULL)
+	{
+		char **argv = malloc(sizeof(char *) * 2);
+
+		argv[0] = full_path;
+		argv[1] = NULL;
+
+		if (execve(full_path, argv, NULL) == -1)
+		{
+			perror("./shell");
+			exit(1);
+		}
+		free(full_path);
+	}
+	else
+	{
+		perror("./shell");
+		exit(1);
+	}
 }
