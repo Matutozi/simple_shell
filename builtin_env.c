@@ -6,12 +6,11 @@
  * Return: return void
 */
 
-void print_environment(char **env)
+void print_environment(void)
 {
-	extern char **environ;
 	char **env = environ;
 
-	while (*env)
+	while (*env != NULL)
 	{
 		write(STDOUT_FILENO, *env, _strlen(*env));
 		write(STDOUT_FILENO, "\n", 1);
