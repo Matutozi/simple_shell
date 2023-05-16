@@ -22,6 +22,10 @@ int execute_cmd(char *cmd)
 	}
 	argv[argc] = NULL;
 
+	if (argv[0] == NULL)
+	{
+		return (0);
+	}
 	if (_strcmp(argv[0], "exit") == 0)
 	{
 		free(cmd_cpy), free(argv);
