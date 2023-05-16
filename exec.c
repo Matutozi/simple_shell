@@ -28,8 +28,12 @@ int execute_cmd(char *cmd)
 	}
 	if (_strcmp(argv[0], "exit") == 0)
 	{
+		if (argc > 1)
+		{
+			status = atoi(argv[1]);
+		}
 		free(cmd_cpy), free(argv);
-		exit(0);
+		exit(status);
 	}
 	else if (_strcmp(argv[0], "env") == 0)
 	{
