@@ -39,9 +39,7 @@ int execute_cmd(char *cmd)
 	}
 
 	if (fork() == 0)
-	{
-		execute_child(argv[0]);
-	}
+		execute_child(argv);
 	else
 	{
 		wait(&status);
@@ -51,23 +49,35 @@ int execute_cmd(char *cmd)
 }
 
 /**
- * execute_child_process - function that executes the child process
+ * execute_child - function that executes the child process
  * @input: parameter
  *
  * Return: void
  *
 */
 
-void execute_child(char *input)
+void execute_child(char **input)
 {
-	char *full_path = find_path(input);
+	char *full_path = find_path(input[0]);
 
 	if (full_path != NULL)
 	{
+		int count = 0;
+		int i;
 		char **argv = malloc(sizeof(char *) * 2);
 
-		argv[0] = full_path;
-		argv[1] = NULL;
+		while (input[count] != NULL)
+			count++;
+
+		if (argv == NULL)
+		{
+			perror("Error: memory allocation");
+		}
+		for (i = 0; i < count; i++)
+		{
+			argv[i] = input[i];
+		}
+		argv[count] = NULL;
 
 		if (execve(full_path, argv, NULL) == -1)
 		{
