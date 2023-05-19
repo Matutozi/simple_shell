@@ -23,23 +23,18 @@ int execute_cmd(char *cmd)
 	argv[argc] = NULL;
 
 	if (argv[0] == NULL)
-	{
 		return (0);
-	}
 	if (_strcmp(argv[0], "exit") == 0)
 	{
 		if (argc > 1)
-		{
 			status = atoi(argv[1]);
-		}
 		free(cmd_cpy), free(argv);
 		exit(status);
 	}
 	else if (_strcmp(argv[0], "env") == 0)
 	{
 		print_env();
-		free(cmd_cpy);
-		free(argv);
+		free(cmd_cpy), free(argv);
 		return (0);
 	}
 
