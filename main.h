@@ -26,7 +26,7 @@ void *_realloc(void *ptr, unsigned int old_size, unsigned int new_size);
 void assign_line(char **lineptr, size_t *n, char *buffer, size_t j);
 ssize_t _getline(char **lineptr, size_t *n, FILE *stream);
 void print_env(void);
-void execute_child(char *input);
+void execute_child(char **input);
 
 #endif /*MAIN_H */
 
