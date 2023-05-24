@@ -11,7 +11,7 @@ char *read_cmd(void)
 	char *cmd = NULL;
 	size_t len = 0;
 
-	bytes = getline(&cmd, &len, stdin);
+	bytes = _getline(&cmd, &len, stdin);
 	if (bytes == -1)
 	{
 		free(cmd);
