@@ -27,6 +27,12 @@ void assign_line(char **lineptr, size_t *n, char *buffer, size_t j);
 ssize_t _getline(char **lineptr, size_t *n, FILE *stream);
 void print_env(void);
 void execute_child(char **input);
-
+int set_env_variable(const char *variable, const char *value);
+int unset_env_variable(const char *variable);
+int unset_environment_variable(const char *name);
+int set_environment_variable(const char *name, const char *value);
+int execute_command(char **argv, int argc);
+int _parse_cmd(char *cmd, char ***argv);
+void free_argv(char **argv);
 #endif /*MAIN_H */
 
