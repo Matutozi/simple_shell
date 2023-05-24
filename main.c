@@ -10,12 +10,14 @@ int main(void)
 
 	while (1)
 	{
-		prompt("($) ");
+		if (isatty(STDIN_FILENO) == 1)
+			prompt("($) ");
+
 		cmd = read_cmd();
 		execute_cmd(cmd);
+		free(cmd);
+		cmd = NULL;
 	}
-	free(cmd);
-	cmd = NULL;
 
 	return (0);
 }
