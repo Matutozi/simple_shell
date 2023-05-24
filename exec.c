@@ -29,22 +29,23 @@ int execute_cmd(char *cmd)
 		if (argc > 1)
 			status = atoi(argv[1]);
 		free(cmd_cpy), free(argv);
+		argv = NULL, cmd_cpy = NULL;
 		exit(status);
 	}
 	else if (_strcmp(argv[0], "env") == 0)
 	{
 		print_env();
 		free(cmd_cpy), free(argv);
+		cmd_cpy = NULL, argv = NULL;
 		return (0);
 	}
 
 	if (fork() == 0)
 		execute_child(argv);
 	else
-	{
 		wait(&status);
-		free(argv);
-	}
+	free(argv), free(cmd_cpy);
+	argv = NULL, cmd_cpy = NULL;
 	return (0);
 }
 
@@ -81,14 +82,15 @@ void execute_child(char **input)
 
 		if (execve(full_path, argv, NULL) == -1)
 		{
-			perror("./shell");
-			exit(1);
+			perror("./hsh");
+			exit(EXIT_FAILURE);
 		}
 		free(full_path);
+		full_path = NULL;
 	}
 	else
 	{
-		perror("./shell");
-		exit(1);
+		perror("./hsh");
+		exit(EXIT_FAILURE);
 	}
 }

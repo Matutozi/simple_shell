@@ -1,14 +1,22 @@
 #include "main.h"
 
 /**
- * read_cmd - Reads a command from standard input.
- * @cmd: Pointer to a buffer where the command will be stored.
- * @len: Pointer to the size of the buffer.
+ * read_cmd - Reads a command from standard input..
  *
  * Return: return the number of characters read, or -1 otherwise
  */
-ssize_t read_cmd(char **cmd, size_t *len)
+char *read_cmd(void)
 {
-	prompt("($) ");
-	return (getline(cmd, len, stdin));
+	ssize_t bytes;
+	char *cmd = NULL;
+	size_t len = 0;
+
+	bytes = getline(&cmd, &len, stdin);
+	if (bytes == -1)
+	{
+		free(cmd);
+		exit(EXIT_FAILURE);
+	}
+
+	return (cmd);
 }

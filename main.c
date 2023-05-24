@@ -6,20 +6,16 @@
  */
 int main(void)
 {
-	char *cmd = NULL;
-	size_t len = 0;
-	ssize_t chars_read;
+	char *cmd;
 
 	while (1)
 	{
-		chars_read = read_cmd(&cmd, &len);
-		if (chars_read == -1)
-		{
-			free(cmd);
-			exit(EXIT_FAILURE);
-		}
+		prompt("($) ");
+		cmd = read_cmd();
 		execute_cmd(cmd);
 	}
+	free(cmd);
+	cmd = NULL;
 
 	return (0);
 }

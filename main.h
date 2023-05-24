@@ -18,7 +18,7 @@ char *_strcpy(char *dest, char *src);
 int _strcmp(const char *string1, const char *string2);
 int cmp_chars(char str[], const char *delim);
 char *_strtok(char str[], const char *delim);
-ssize_t read_cmd(char **cmd, size_t *len);
+char *read_cmd();
 char **parse_cmd(char *cmd);
 int execute_cmd(char *cmd);
 char *find_path(char *command);
