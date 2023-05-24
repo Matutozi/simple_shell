@@ -15,7 +15,7 @@ char *read_cmd(void)
 	if (bytes == -1)
 	{
 		free(cmd);
-		exit(EXIT_FAILURE);
+		exit(EXIT_SUCCESS);
 	}
 
 	return (cmd);
